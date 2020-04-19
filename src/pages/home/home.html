@@ -1,14 +1,31 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar hideBackButton>
+    <button ion-button clear>
+      <ion-icon name="contact" margin-right></ion-icon> {{userDetails.username}}
+    </button>
+  
     <ion-title>
-      Ionic Blank
+      Hobbies
     </ion-title>
+  
+    <ion-buttons end>
+      <button ion-button color="secondary" (click)="CreatehobbyPage()">Create Hobby</button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v3">docs</a> will be your guide.
-  </p>
+  <ion-list>
+    <ion-item *ngFor="let hobby of hobbies">
+      <ion-avatar item-start>
+        <img src="https://www.youngisthan.in/wp-content/uploads/2018/08/title-pic-15.jpg">
+      </ion-avatar>
+      <h2>{{hobby.hobbyname}}</h2>
+      <p>{{hobby.description}}</p>
+      <span *ngFor="let time of hobby.timeslots">
+        <!--I want to list the colors of the person here-->
+        {{time}}:00
+      </span>
+    </ion-item>
+  </ion-list>
 </ion-content>
